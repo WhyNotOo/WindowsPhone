@@ -1,0 +1,81 @@
+{
+  "name": "windowPhone7",
+  "version": "1.0",
+  "fullName": "Windows Phone 7",
+  "description": "Display your data in a mobile responsive theme based on windows phone 7",
+  "keywords": [
+    "responsive",
+    "windows",
+    "phone",
+    "mobile"
+  ],
+  "contributors": [
+    {
+      "name": "Albessard",
+      "email": "k.albessard@gmail.com",
+      "web": "http://www.kevin-albessard.com"
+    }
+  ],
+  "maintainers": [
+    {
+      "name": "JoshFire Factory",
+      "email": "contact@joshfire.com",
+      "web": "http://www.joshfire.com"
+    }
+  ],
+  "joshfire": {
+    "images": {
+      "small":"marketing/phone-small.jpg",
+      "big":"marketing/phone-big.jpg"
+    },
+    "premium": false,
+    "devices": [
+      {
+        "devices": [
+          "phone"
+        ],
+        "startfile": "app/index.html",
+        "orientation": "auto",
+        "images": "marketing/phone-big.jpg",
+        "screenshots": [
+          "marketing/screenshot.jpg"
+        ],
+        "disablePreview": false
+      }
+    ],
+
+    "datasources": {
+      "various": {
+        "title": "List of data you want to display",
+        "description": "Twitter, Wordpress, Spreadsheet, Flickr, Instagram",
+        "multiple": true
+      }
+    },
+
+    "options": {
+      "form": [
+        "datasources.various"
+      ]
+    },
+
+    "libraries": [
+      {
+        "name": "jQuery",
+        "homepage": "http://jquery.com/",
+        "description": "jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development.",
+        "repositories": [
+          {
+            "type": "git",
+            "url": "https://github.com/jquery/jquery.git"
+          }
+        ],
+        "licenses": [
+          {
+            "type": "MIT",
+            "url": "license-jquery.txt"
+          }
+        ]
+      }
+    ]
+  }
+}
