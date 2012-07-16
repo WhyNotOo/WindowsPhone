@@ -28,7 +28,7 @@
 
   <link rel="stylesheet" href="css/style.css">
 
-  <script data-joshfire-bootstrap src=""></script>
+  <script data-joshfire-bootstrap src="http://preview.joshfireapps.com/bootstrap/4ffee6f03b632e0100007ec5/auto/phone/"></script>
 
   <script src="js/libs/modernizr-2.0.6.min.js"></script>
 </head>
@@ -50,14 +50,21 @@
       <aside class="aside">
         <img src="img/arrow-back.png" title="Back to home" class="backHome" />
       </aside>
-      <section id="sourceList"></section>
+      <section id="sourceList">
+        <ol class="clearfix" data-name=""></ol>
+      </section>
     </section>
 
     <section id="detailItem" class="hidden">
       <aside class="aside">
         <img src="img/arrow-back.png" title="Back to home" class="backList" />
       </aside>
-      <section id="detail"></section>
+      <section id="detail">
+        <h3></h3>
+        <p class="date"></p>
+        <img src="" title="" />
+        <p class="author"></p>
+      </section>
     </section>
 
   </section>
@@ -68,6 +75,7 @@
 
   <!-- scripts concatenated and minified via ant build script -->
   <script src="js/helper.js"></script>
+  <script src="http://eightmedia.github.com/hammer.js/hammer.js"></script>
   <script src="js/script.js"></script>
   <!-- end concatenated and minified scripts-->
 

@@ -34,7 +34,7 @@ sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: b
 sup { top: -0.5em; }
 sub { bottom: -0.25em; }
 
-ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
+ul, ol { margin: 0; padding: 0 0 0 10px; list-style-type:none;}
 dd { margin: 0 0 0 40px; }
 nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
 img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
@@ -65,22 +65,34 @@ td { vertical-align: top; }
    Author:
    ========================================================================== */
 
-body, html 	{width:100%; height:100%; background:#000;}
+body, html 	{width:100%; height:100%; background:#000; font-size:70%;}
+img 				{max-width:100%;}
 
-#container	{width:92%; height:96%; padding:4% 4% 0 4%;}
+#container	{position:relative; width:92%; height:96%; padding:4% 4% 0 4%;}
+/*#main, #detailSource, #detailItem {position:absolute; left:0; top:0;}*/
 
 .view, #detailSource, #detailItem	{width:100%; height:100%;}
 	.view > *, #detailSource > *, #detailItem > *	{float:left;}
-	.datasources			{width:80%; height:100%;}
-	.datasources .datasource {display:inline-block; width:47%; margin:0 10px 10px 0; background:#1BA0E1; cursor:pointer;}
+	.datasources	{width:80%; height:100%;}
+	.datasources .datasource 	{position:relative; display:inline-block; width:47%; margin:0 10px 10px 0; background:#1BA0E1; cursor:pointer;}
 	.datasources .datasource:nth-child(even) {margin-right:0;}
+	.datasources .datasource img 			{position:absolute; top:20%; left:5%; max-width:50%;}
+	.datasources .datasource .number 	{position:absolute; top:28%; right:5%; font-size:4rem; font-weight:bold; color:#fff; margin:0;}
+	.datasources .datasource h2 			{position:absolute; bottom:10px; left:5%; color:#fff; font-size:2rem; margin:0; padding:0;}
 
-	.aside			{width:19%;}
+	.aside				{width:19%; text-align:center;}
 		.aside .changeView, .aside .backHome, .aside .backList	{max-width:100%; margin:0 auto; cursor:pointer;}
-	.view2 .aside	{margin-right:6px;}
 
+	#sourceList 	{width:80%; height:100%;}
+		#sourceList ol, #sourceList ol li	{max-width:100%; color:#fff;}
+		#sourceList li 				{margin:0 0 10px 0; cursor:pointer;}
+			#sourceList li:last-child	{margin-bottom:0;}
+			#sourceList li .thumbnail {width:70%; float:left; margin-right:5%;}
+			#sourceList li .large			{width:100%;}
+			#sourceList li .title 		{width:25%; float:left; font-size:1.5rem; word-wrap:break-word;}
 
-
+	#detail 		 	{width:75%; height:100%; margin:0 0 0 5%; font-size:1.5rem; color:#fff;}
+		#detail h3 		{word-wrap:break-word;}
 
 
 
