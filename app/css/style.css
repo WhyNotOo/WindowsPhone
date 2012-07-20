@@ -69,9 +69,9 @@ body, html 	{width:100%; height:100%; background:#000; font-size:70%;}
 img 				{max-width:100%;}
 
 #container	{position:relative; width:92%; height:96%; padding:4% 4% 0 4%;}
-/*#main, #detailSource, #detailItem {position:absolute; left:0; top:0;}*/
+#main, #detailSource, #detailItem {position:absolute; top:4%; width:92%; height:96%;}
+#main {left:4%;}
 
-.view, #detailSource, #detailItem	{width:100%; height:100%;}
 	.view > *, #detailSource > *, #detailItem > *	{float:left;}
 	.datasources	{width:80%; height:100%;}
 	.datasources .datasource 	{position:relative; display:inline-block; width:47%; margin:0 10px 10px 0; background:#1BA0E1; cursor:pointer;}
@@ -83,15 +83,17 @@ img 				{max-width:100%;}
 	.aside				{width:19%; text-align:center;}
 		.aside .changeView, .aside .backHome, .aside .backList	{max-width:100%; margin:0 auto; cursor:pointer;}
 
-	#sourceList 	{width:80%; height:100%;}
+#detailSource.loading #loadmore {background:url('../img/spinner.gif') no-repeat center center;}
+	#sourceList 	{width:80%; height:100%; overflow:auto;}
 		#sourceList ol, #sourceList ol li	{max-width:100%; color:#fff;}
 		#sourceList li 				{margin:0 0 10px 0; cursor:pointer;}
 			#sourceList li:last-child	{margin-bottom:0;}
-			#sourceList li .thumbnail {width:70%; float:left; margin-right:5%;}
+			#sourceList li .thumbnail {width:50%; float:left; margin-right:5%;}
 			#sourceList li .large			{width:100%;}
-			#sourceList li .title 		{width:25%; float:left; font-size:1.5rem; word-wrap:break-word;}
+			#sourceList li .title 		{width:45%; float:left; font-size:1.5rem; word-wrap:break-word;}
+		#loadmore 	{height:30px; font-size:1.6rem; line-height:30px; text-align:center; margin-bottom:0; color:#eee; background:#111; cursor:pointer;}
 
-	#detail 		 	{width:75%; height:100%; margin:0 0 0 5%; font-size:1.5rem; color:#fff;}
+	#detail 		 	{width:75%; height:100%; margin:0 0 0 5%; font-size:1.5rem; color:#fff; overflow:auto;}
 		#detail h3 		{word-wrap:break-word;}
 
 
