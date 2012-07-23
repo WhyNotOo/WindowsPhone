@@ -9,7 +9,9 @@
       sourceBase  = new Object,
       allSources  = new Object,
       containerW  = $('#container').width(),
-      scrollerList, scrollerDetail;
+      scrollerHome   = new iScroll('datasources', { scrollbarClass: 'scrollbar', hScroll: false }),
+      scrollerList   = new iScroll('sourceList', { scrollbarClass: 'scrollbar', hScroll: false }),
+      scrollerDetail = new iScroll('detail', { scrollbarClass: 'scrollbar', hScroll: false });
 
   icons['Twitter']  = 'img/windows/Twitter.png';
   icons['Flickr']   = 'img/windows/Photoshop.png';
@@ -49,6 +51,7 @@
     	  		// }
           });
           app.resizeItem();
+          scrollerHome.refresh();
         }
   		});
 
@@ -246,6 +249,9 @@
 
   	onResize: function() {
   		app.resizeItem();
+      scrollerHome.refresh();
+      scrollerList.refresh();
+      scrollerDetail.refresh();
   	},
 
   };
@@ -282,15 +288,16 @@
     app.slideView('#detailItem', '#detailSource');
   });
 
+  var supportsOrientationChange = "onorientationchange" in window,
+      orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+
 // --- Launch app
 	$(document).ready(function() {
+    window.addEventListener(orientationEvent, app.onResize());
+    $(window).resize(app.onResize);
     document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 		app.getDatasources();
     app.touchEvents();
-    scrollerHome = new iScroll('datasources', { scrollbarClass: 'scrollbar', hScroll: false });
-    scrollerList = new iScroll('sourceList', { scrollbarClass: 'scrollbar', hScroll: false });
-    scrollerDetail = new iScroll('detail', { scrollbarClass: 'scrollbar', hScroll: false });
-	  $(window).resize(app.onResize);
 	});
 
 })(jQuery);
