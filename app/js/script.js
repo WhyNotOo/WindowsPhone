@@ -42,9 +42,9 @@
             var source = entry.entries;
 
             if(idx <= 5) {
-      				main.append('<article class="datasource" data-source="'+entry.name+'"><img src="'+icons[entry.name]+'" /><p class="number">'+source.length+'</p><h2>'+entry.name+'</h2></article>');
+      				main.append('<article class="datasource" data-source="'+entry.name+'"><a href="#" title="'+entry.name+'"><img src="'+icons[entry.name]+'" /><p class="number">'+source.length+'</p><h2>'+entry.name+'</h2></a></article>');
     	  		} else {
-    	  			$('.view2 .datasources').append('<article class="datasource" data-source="'+entry.name+'"><img src="'+icons[entry.name]+'" /><p class="number">'+source.length+'</p><h2>'+entry.name+'</h2></article>');
+    	  			$('.view2 .datasources').append('<article class="datasource" data-source="'+entry.name+'"><a href="#" title="'+entry.name+'"><img src="'+icons[entry.name]+'" /><p class="number">'+source.length+'</p><h2>'+entry.name+'</h2></a></article>');
     	  			$('.view1 .changeView').removeClass('hidden');
     	  		}
           });
@@ -93,19 +93,19 @@
       if(content.name == 'Twitter') {
         for(var i = 0, len = content.items.length; i < len; i++) {
           var image = (content.items[i].author[0].image.contentURL) ? content.items[i].author[0].image.contentURL : 'img/noimage.png';
-          list.append('<li class="clearfix" data-item="'+i+'"><img class="thumbnail" src="'+image+'" /><p class="title">'+content.items[i].name+'</p></li>');
+          list.append('<li class="clearfix" data-item="'+i+'"><a href="#" title="'+content.items[i].name+'"><img class="thumbnail" src="'+image+'" /><p class="title">'+content.items[i].name+'</p></a></li>');
           // if(i==len-1)
             // app.scrollContent();
         }
       } else if(content.name == 'Blog' || content.name == 'Youtube') {
         for(var i = 0, len = content.items.length; i < len; i++) {
           var image = (content.items[i].image && content.items[i].image.contentURL) ? content.items[i].image.contentURL : 'img/noimage.png';
-          list.append('<li class="clearfix" data-item="'+i+'"><img class="large" src="'+image+'" /></li>');
+          list.append('<li class="clearfix" data-item="'+i+'"><a href="#" title=""><img class="large" src="'+image+'" /></a></li>');
         }
       } else {
         for(var i = 0, len = content.items.length; i < len; i++) {
           var image = (content.items[i].contentURL) ? content.items[i].contentURL : 'img/noimage.png';
-          list.append('<li class="clearfix" data-item="'+i+'"><img class="large" src="'+image+'" /></li>');
+          list.append('<li class="clearfix" data-item="'+i+'"><a href="#" title=""><img class="large" src="'+image+'" /></a></li>');
         }
       }
 
