@@ -20,9 +20,9 @@
   var app = {
 
   	getDatasources: function() {
-  		var main = $('.view1 .datasources');
+  		var main = $('.view1 .datasources ul');
 
-      $('.view1').after('<section class="view view2 hidden"><aside class="aside"><img src="img/arrow-back.png" title="See more" class="changeView" /></aside><section class="datasources"></section></section>');
+      // $('.view1').after('<section class="view view2 hidden"><aside class="aside"><img src="img/arrow-back.png" title="See more" class="changeView" /></aside><section class="datasources"></section></section>');
 
       for(var i = 0, len = datasources.children.length; i < len; i++) {
         sourceBase[datasources.children[i].name] = i;
@@ -41,12 +41,12 @@
 
             var source = entry.entries;
 
-            if(idx <= 5) {
-      				main.append('<article class="datasource" data-source="'+entry.name+'"><a href="#" title="'+entry.name+'"><img src="'+icons[entry.name]+'" /><p class="number">'+source.length+'</p><h2>'+entry.name+'</h2></a></article>');
-    	  		} else {
-    	  			$('.view2 .datasources').append('<article class="datasource" data-source="'+entry.name+'"><a href="#" title="'+entry.name+'"><img src="'+icons[entry.name]+'" /><p class="number">'+source.length+'</p><h2>'+entry.name+'</h2></a></article>');
-    	  			$('.view1 .changeView').removeClass('hidden');
-    	  		}
+            // if(idx <= 5) {
+      				main.append('<li><article class="datasource" data-source="'+entry.name+'"><a href="#" title="'+entry.name+'"><img src="'+icons[entry.name]+'" /><p class="number">'+source.length+'</p><h2>'+entry.name+'</h2></a></article></li>');
+    	  		// } else {
+    	  		// 	$('.view2 .datasources').append('<article class="datasource" data-source="'+entry.name+'"><a href="#" title="'+entry.name+'"><img src="'+icons[entry.name]+'" /><p class="number">'+source.length+'</p><h2>'+entry.name+'</h2></a></article>');
+    	  		// 	$('.view1 .changeView').removeClass('hidden');
+    	  		// }
           });
           app.resizeItem();
         }
@@ -287,6 +287,7 @@
     document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 		app.getDatasources();
     app.touchEvents();
+    scrollerHome = new iScroll('datasources', { scrollbarClass: 'scrollbar', hScroll: false });
     scrollerList = new iScroll('sourceList', { scrollbarClass: 'scrollbar', hScroll: false });
     scrollerDetail = new iScroll('detail', { scrollbarClass: 'scrollbar', hScroll: false });
 	  $(window).resize(app.onResize);
