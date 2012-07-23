@@ -85,7 +85,7 @@ img 				{max-width:100%;}
 
 #detailSource.loading #loadmore {background:url('../img/spinner.gif') no-repeat center center;}
 	#sourceList 	{width:80%; height:100%; overflow:auto;}
-		#sourceList ol, #sourceList ol li	{max-width:100%; color:#fff;}
+		#sourceList ul, #sourceList ul li	{max-width:100%; color:#fff;}
 		#sourceList li 				{margin:0 0 10px 0; cursor:pointer;}
 			#sourceList li:last-child	{margin-bottom:0;}
 			#sourceList li .thumbnail {width:50%; float:left; margin-right:5%;}
@@ -95,7 +95,22 @@ img 				{max-width:100%;}
 
 	#detail 		 	{width:75%; height:100%; margin:0 0 0 5%; font-size:1.5rem; color:#fff; overflow:auto;}
 		#detail h3 		{word-wrap:break-word;}
+		#detail li 		{margin-bottom:10px;}
 
+.scrollbarV {position:absolute; z-index:100; width:8px; bottom:0; top:0; right:0;}
+.scrollbarV > div {
+	position:absolute;
+	z-index:100;
+	width:100%;
+
+	/* The following is probably what you want to customize */
+	background:-webkit-gradient(linear, 0 0, 100% 0, from(#f00), to(#900));
+	border:1px solid #800;
+	-webkit-background-clip:padding-box;
+	-webkit-box-sizing:border-box;
+	-webkit-border-radius:4px;
+	-webkit-box-shadow:inset 1px 1px 0 rgba(255,255,255,0.5);
+}
 
 
 

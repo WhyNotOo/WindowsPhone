@@ -51,7 +51,7 @@
         <img src="img/arrow-back.png" title="Back to home" class="backHome" />
       </aside>
       <section id="sourceList">
-        <ol class="clearfix" data-name=""></ol>
+        <ul class="clearfix" data-name=""></ul>
         <p id="loadmore"><span>Load more entries</span></p>
       </section>
     </section>
@@ -61,11 +61,14 @@
         <img src="img/arrow-back.png" title="Back to home" class="backList" />
       </aside>
       <section id="detail">
-        <h3></h3>
-        <p class="date"></p>
-        <img src="" title="" />
-        <p class="text"></p>
-        <p class="author"></p>
+        <ul>
+          <li class="title"></li>
+          <li class="date"></li>
+          <li class="image"><img src="" title="" /></li>
+          <li class="video"></li>
+          <li class="text"></li>
+          <li class="author"></li>
+        </ul>
       </section>
     </section>
 
@@ -77,6 +80,7 @@
 
   <!-- scripts concatenated and minified via ant build script -->
   <script src="js/helper.js"></script>
+  <script src="js/libs/iscroll.js"></script>
   <script src="http://eightmedia.github.com/hammer.js/hammer.js"></script>
   <script src="js/script.js"></script>
   <!-- end concatenated and minified scripts-->
