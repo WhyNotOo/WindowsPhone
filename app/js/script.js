@@ -9,7 +9,7 @@
       sourceBase  = new Object,
       allSources  = new Object,
       containerW  = $('#container').width(),
-      scrollerHome   = new iScroll('datasources', { scrollbarClass: 'scrollbar', hScroll: false }),
+      scrollerHome   = new iScroll('view', { scrollbarClass: 'scrollbar', hScroll: false }),
       scrollerList   = new iScroll('sourceList', { scrollbarClass: 'scrollbar', hScroll: false }),
       scrollerDetail = new iScroll('detail', { scrollbarClass: 'scrollbar', hScroll: false });
 
@@ -22,7 +22,7 @@
   var app = {
 
   	getDatasources: function() {
-  		var main = $('.view1 .datasources ul');
+  		var main = $('.view1 .datasources');
 
       // $('.view1').after('<section class="view view2 hidden"><aside class="aside"><img src="img/arrow-back.png" title="See more" class="changeView" /></aside><section class="datasources"></section></section>');
 
@@ -44,12 +44,17 @@
             var source = entry.entries;
 
             // if(idx <= 5) {
-      				main.append('<li><article class="datasource" data-source="'+entry.name+'"><a href="#" title="'+entry.name+'"><img src="'+icons[entry.name]+'" /><p class="number">'+source.length+'</p><h2>'+entry.name+'</h2></a></article></li>');
+      				main.append('<article class="datasource" data-source="'+entry.name+'"><img src="'+icons[entry.name]+'" /><p class="number">'+source.length+'</p><h2>'+entry.name+'</h2></article>');
     	  		// } else {
     	  		// 	$('.view2 .datasources').append('<article class="datasource" data-source="'+entry.name+'"><a href="#" title="'+entry.name+'"><img src="'+icons[entry.name]+'" /><p class="number">'+source.length+'</p><h2>'+entry.name+'</h2></a></article>');
     	  		// 	$('.view1 .changeView').removeClass('hidden');
     	  		// }
           });
+
+          $('.datasource').on('click', function() {
+            app.displayDatasource($(this).attr('data-source'));
+          });
+
           app.resizeItem();
           scrollerHome.refresh();
         }
@@ -96,28 +101,32 @@
       if(content.name == 'Twitter') {
         for(var i = 0, len = content.items.length; i < len; i++) {
           var image = (content.items[i].author[0].image.contentURL) ? content.items[i].author[0].image.contentURL : 'img/noimage.png';
-          list.append('<li class="clearfix" data-item="'+i+'"><a href="#" title="'+content.items[i].name+'"><img class="thumbnail" src="'+image+'" /><p class="title">'+content.items[i].name+'</p></a></li>');
-          // if(i==len-1)
-            // app.scrollContent();
+          list.append('<li class="clearfix" data-item="'+i+'"><img class="thumbnail" src="'+image+'" /><p class="title">'+content.items[i].name+'</p></li>');
         }
       } else if(content.name == 'Blog' || content.name == 'Youtube') {
         for(var i = 0, len = content.items.length; i < len; i++) {
           var image = (content.items[i].image && content.items[i].image.contentURL) ? content.items[i].image.contentURL : 'img/noimage.png';
-          list.append('<li class="clearfix" data-item="'+i+'"><a href="#" title=""><img class="large" src="'+image+'" /></a></li>');
+          list.append('<li class="clearfix" data-item="'+i+'"><img class="large" src="'+image+'" /></li>');
         }
       } else {
         for(var i = 0, len = content.items.length; i < len; i++) {
           var image = (content.items[i].contentURL) ? content.items[i].contentURL : 'img/noimage.png';
-          list.append('<li class="clearfix" data-item="'+i+'"><a href="#" title=""><img class="large" src="'+image+'" /></a></li>');
+          list.append('<li class="clearfix" data-item="'+i+'"><img class="large" src="'+image+'" /></li>');
         }
       }
 
       app.slideView('#main', '#detailSource');
       scrollerList.scrollTo(0, 0, 100);
 
-      setTimeout(function () {
+      $('.thumbnail, .large').load(function() {
         scrollerList.refresh();
-      }, 3000);
+      });
+
+      $('#sourceList').on('click', 'li', function() {
+        var source  = $('#sourceList ul').attr('data-name'),
+            item    = $(this).attr('data-item');
+        app.displayItem(source, item);
+      });
   	},
 
   	displayItem: function(source, item) {
@@ -164,7 +173,7 @@
     },
 
     touchEvents: function() {
-      var hammer = new Hammer(document.getElementById("container"), { prevent_default: true });
+      var hammer = new Hammer(document.getElementById("container"), { prevent_default: false });
 
       // hammer.ondrag = function(e) {
       //   console.log(e);
@@ -259,31 +268,21 @@
 
 
 // --- ACTIONS
-  $('.datasource').live('click', function() {
-  	app.displayDatasource($(this).attr('data-source'));
-	});
-
-  $('#sourceList li').live('dblclick', function() {
-    var source  = $('#sourceList ul').attr('data-name'),
-        item    = $(this).attr('data-item');
-    app.displayItem(source, item);
-  });
-
-  $('#loadmore').click(function() {
+  $('#loadmore').on('click', function() {
     var source = $('#sourceList ul').attr('data-name');
     app.loadMoreEntries(source);
   });
 
-  $('.changeView').live('click', function() {
-  	$('.view1, .view2').toggleClass('hidden');
-  });
+  // $('.changeView').on('click', function() {
+  // 	$('.view1, .view2').toggleClass('hidden');
+  // });
 
-  $('.backHome').live('click', function() {
+  $('.backHome').on('click', function() {
     app.clearview('list');
     app.slideView('#detailSource', '#main');
   });
 
-  $('.backList').live('click', function() {
+  $('.backList').on('click', function() {
     app.clearview('item');
     app.slideView('#detailItem', '#detailSource');
   });

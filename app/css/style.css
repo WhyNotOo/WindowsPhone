@@ -11,7 +11,7 @@ html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 10
 body { margin: 0; font-size: 13px; line-height: 1.231; }
 body, button, input, select, textarea { font-family: sans-serif; color: #222; }
 
-a { color: #00e; }
+a { color: #00e; cursor:pointer;}
 a:visited { color: #551a8b; }
 a:hover { color: #06e; }
 a:focus { outline: thin dotted; }
@@ -74,11 +74,11 @@ a, a:hover, a:visited {color:#fff; text-decoration:none;}
 #main, #detailSource, #detailItem {position:absolute; top:4%; width:92%; height:96%;}
 #main {left:4%;}
 
+	#view 	{height:100%;}
 	.view > *, #detailSource > *, #detailItem > *	{float:left;}
-	.datasources	{width:80%; height:100%;}
-	.datasources li 	{position:relative; display:inline-block; width:47%; margin:0 10px 10px 0; background:#1BA0E1; cursor:pointer;}
-	.datasources li:nth-child(even) {margin-right:0;}
-	.datasources .datasource a 				{display:block; height:100%;}
+	.datasources	{position:relative; width:80%; height:100%;}
+	.datasources .datasource	{position:relative; display:inline-block; width:47%; margin:0 10px 10px 0; background:#1BA0E1; cursor:pointer;}
+	.datasources .datasource:nth-child(even) {margin-right:0;}
 	.datasources .datasource img 			{position:absolute; top:20%; left:5%; max-width:50%;}
 	.datasources .datasource .number 	{position:absolute; top:28%; right:5%; font-size:4rem; font-weight:bold; color:#fff; margin:0;}
 	.datasources .datasource h2 			{position:absolute; bottom:10px; left:5%; color:#fff; font-size:2rem; margin:0; padding:0;}
@@ -101,20 +101,6 @@ a, a:hover, a:visited {color:#fff; text-decoration:none;}
 		#detail h3 		{word-wrap:break-word;}
 		#detail li 		{margin-bottom:10px;}
 
-.scrollbarV {position:absolute; z-index:100; width:8px; bottom:0; top:0; right:0;}
-.scrollbarV > div {
-	position:absolute;
-	z-index:100;
-	width:100%;
-
-	/* The following is probably what you want to customize */
-	background:-webkit-gradient(linear, 0 0, 100% 0, from(#f00), to(#900));
-	border:1px solid #800;
-	-webkit-background-clip:padding-box;
-	-webkit-box-sizing:border-box;
-	-webkit-border-radius:4px;
-	-webkit-box-shadow:inset 1px 1px 0 rgba(255,255,255,0.5);
-}
 
 
 
