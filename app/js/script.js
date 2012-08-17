@@ -292,9 +292,9 @@
 
 // --- Launch app
 	$(document).ready(function() {
-    window.addEventListener(orientationEvent, app.onResize());
+    window.addEventListener(orientationEvent, app.onResize);
     $(window).resize(app.onResize);
-    document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    // document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 		app.getDatasources();
     app.touchEvents();
 	});
